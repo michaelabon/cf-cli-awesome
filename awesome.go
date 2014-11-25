@@ -10,6 +10,9 @@ import (
 type AwesomePlugin struct{}
 
 func (c *AwesomePlugin) Run(cliConnection plugin.CliConnection, args []string) {
+	red := "\033[31m\033[1m"
+	blue := "\033[35m\033[1m"
+	clear := "\033[m"
 
 	/*
 	   regularlyAwesomeLogo := `
@@ -29,15 +32,9 @@ func (c *AwesomePlugin) Run(cliConnection plugin.CliConnection, args []string) {
                      )       (       (               )               )  
            (   (  ( /(       )\ )    )\ )         ( /(  (         ( /(  
            )\  )\ )\())   ( (()/(   (()/(      (  )\()) )\ ) (    )\()) 
-         (((_)((_|(_)\   ))\ /(_))   /(_))(   ))\((_)\ (()/( )(  ((_)\  
-         )\___ _   ((_) /((_|_))_/  (_))_|)\ /((_)_((_) ((_)|()\__ ((_)
-        ((/ __| | / _ \(_))( |   \  | |_ ((_|_))(| \| | _| | ((_) \ / / 
-         | (__| || (_) | || || |) | | __/ _ \ || | .\ / _  || ^_|\ V /  
-          \___|_| \___/ \_,_||___/  |_| \___/\_,_|_|\_\__,_||_|   |_|                                                         
-    `
+         (((_)((_|(_)\   ))\ /(_))   /(_))(   ))\((_)\ (()/( )(  ((_)\  `
 
 	extraFlamingLogo := `
-
                                                        /
                   )         )                         ))        (
             )    /(        ( (         (             /  )       \
@@ -45,12 +42,14 @@ func (c *AwesomePlugin) Run(cliConnection plugin.CliConnection, args []string) {
            ) (  /\ ( )    \ \  ((     ( (       )\  )  \ (     )  \   )  
           (   )(  ( \ (   )  ( )\ )   )\ )     /   ( /(  )(    /  (  /(  
           )\   )\ )\())  (  ( ()/( \ (()/(    (    )\()) )\ ) ( \ )\()) 
-         (((_)((_|(_)\   ))\ /(_) )  /(_))(   ) \ (_)\ (()/( )( /((_) \  
-         )\___ _   ((_) /((_|_))_)  (_))_|)\ /((_)_((_) ((_)|()\__ ((_)
-        ((/ __| | / _ \(_))( |   \  | |_ ((_|_))(| \| | _| | ((_) \ / / 
-         | (__| || (_) | || || |) | | __/ _ \ || | .\ / _  || ^_|\ V /  
-          \___|_| \___/ \_,_||___/  |_| \___/\_,_|_|\_\__,_||_|   |_|             
-    `
+         (((_)((_|(_)\   ))\ /(_) )  /(_))(   ) \ (_)\ (()/( )( /((_) \ `
+
+	cloudFoundryBase := "\n" +
+		"         " + red + ")\\" + blue + "___ _  " + red + "((" + blue + "_" + red + ") /((" + blue + "_" + red + "|" + blue + "_" + red + "))" + blue + "_" + red + ")   (" + blue + "_" + red + "))" + blue + "_" + red + "|)\\ /((" + blue + "_" + red + ")" + blue + "_" + red + "((" + blue + "_" + red + ") ((" + blue + "_" + red + ")|()\\" + blue + "__" + red + "  ((" + blue + "_" + red + ")\n" +
+		"        " + red + "((" + blue + "/ __| | / _ \\" + red + "(" + blue + "_" + red + "))(" + blue + " |   \\  | |_ " + red + "((" + blue + "_" + red + "|" + blue + "_" + red + "))(" + blue + "| \\| | _| | " + red + "((" + blue + "_" + red + ")" + blue + " \\ / /\n" +
+		"         | (__| || (_) | || || |) | | __/ _ \\ || | .\\ / _  || ^_|\\ V / \n" +
+		"          \\___|_| \\___/ \\_,_||___/  |_| \\___/\\_,_|_|\\_\\__,_||_|   |_|  \n"
+
 	nfoText := `
  /============================================================================\
  |                     -*- Cloud Foundry is AWESOME -*-                       |
@@ -112,11 +111,15 @@ func (c *AwesomePlugin) Run(cliConnection plugin.CliConnection, args []string) {
 			}
 		}
 
+		fmt.Print(red)
 		if extraFlames {
-			fmt.Println(extraFlamingLogo)
+			fmt.Print(extraFlamingLogo)
 		} else {
-			fmt.Println(flamingLogo)
+			fmt.Print(flamingLogo)
 		}
+		fmt.Print(blue)
+		fmt.Print(cloudFoundryBase)
+		fmt.Println(clear) //To fix whatever terrible things we've done to the terminal
 
 		if nfo {
 			fmt.Println(nfoText)
