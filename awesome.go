@@ -106,7 +106,7 @@ func (c *AwesomePlugin) Run(cliConnection plugin.CliConnection, args []string) {
 				nfo = true
 			case "awesome":
 			default:
-				fmt.Println("Your usage is not awesome enough.  Try --extra-flames or --nfo.")
+				fmt.Println("Your usage is not awesome enough.  Try --extra-flames and/or --nfo.")
 				os.Exit(1)
 			}
 		}
@@ -134,7 +134,7 @@ func (c *AwesomePlugin) GetMetadata() plugin.PluginMetadata {
 		Commands: []plugin.Command{
 			plugin.Command{
 				Name:     "awesome",
-				HelpText: "Awesome? Yes. Use --extra-flames, or --nfo.",
+				HelpText: "Awesome? Yes. Use --extra-flames and/or --nfo.",
 			},
 		},
 	}
