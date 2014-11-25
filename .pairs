@@ -1,0 +1,9 @@
+pairs:
+  dv: David Varvel; dvarvel
+  mk: Mike Kenyon; mkenyon
+
+email:
+  prefix: pair
+  domain: pivotal.io
+
+global: false
