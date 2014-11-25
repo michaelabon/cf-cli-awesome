@@ -69,7 +69,7 @@ func (c *AwesomePlugin) GetMetadata() plugin.PluginMetadata {
 		Commands: []plugin.Command{
 			plugin.Command{
 				Name:     "awesome",
-				HelpText: "Awesome? Yes.",
+				HelpText: "Awesome? Yes. Use --extra-flames when needed.",
 			},
 		},
 	}
